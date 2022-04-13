@@ -4,10 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const connectionString = process.env.MONGO_CON
+
 mongoose = require('mongoose');
 var Barbeque = require('./models/barbequeSchema');
-mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+const connectionString = process.env.MONGO_CON
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,7 +16,10 @@ var BarbequeRouter = require('./routes/Barbeque');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 
-
+mongoose.connect(connectionString, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
+});
 
 var app = express();
 
@@ -43,7 +47,21 @@ async function recreateDB() {
     { Order_name: "Grilled Chicken", Order_quantity: '3', Order_price: 40 });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
-    console.log("First database created")
+    console.log("First object created")
+  });
+
+  let instance2 = new Barbeque(
+    { Order_name: "Grilled Fish", Order_quantity: '2', Order_price: 27 });
+  instance2.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Second object created")
+  });
+
+  let instance3 = new Barbeque(
+    { Order_name: "Grilled prawns", Order_quantity: '2', Order_price: 45 });
+  instance3.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Third object created")
   });
 }
 let reseed = true;
