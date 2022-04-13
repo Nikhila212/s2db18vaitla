@@ -4,6 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+var Barbeque = require('./models/barbequeSchema');
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var BarbequeRouter = require('./routes/Barbeque');
@@ -29,6 +34,20 @@ app.use('/users', usersRouter);
 app.use('/Barbeque', BarbequeRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+
+// We can seed the collection if needed on server start
+async function recreateDB() {
+  // Delete everything
+  await Icecream.deleteMany();
+  let instance1 = new Icecream(
+    { icecream_flavour: "Butterscotch", icecream_quantity: '2lb', icecream_cost: 10 });
+  instance1.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("First object saved")
+  });
+}
+let reseed = true;
+if (reseed) { recreateDB(); }
 
 
 
