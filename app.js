@@ -38,12 +38,12 @@ app.use('/selector', selectorRouter);
 // We can seed the collection if needed on server start
 async function recreateDB() {
   // Delete everything
-  await Icecream.deleteMany();
-  let instance1 = new Icecream(
-    { icecream_flavour: "Butterscotch", icecream_quantity: '2lb', icecream_cost: 10 });
+  await Barbeque.deleteMany();
+  let instance1 = new Barbeque(
+    { Order_name: "Grilled Chicken", Order_quantity: '3', Order_price: 40 });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
-    console.log("First object saved")
+    console.log("First database created")
   });
 }
 let reseed = true;
