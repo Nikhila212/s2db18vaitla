@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
-const barbequeSchema = mongoose.Schema({
-Order_name: String,
-Order_quantity: String,
-Order_price: Number
+const BarbequeSchema = mongoose.Schema({
+order_name: String,
+order_quantity: String,
+order_price: Number
 })
-module.exports = mongoose.model("Barbeque",barbequeSchema)
+module.exports = mongoose.model("Barbeque",BarbequeSchema)
