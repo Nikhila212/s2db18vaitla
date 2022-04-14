@@ -53,6 +53,8 @@ var usersRouter = require('./routes/users');
 var BarbequeRouter = require('./routes/Barbeque');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
+var barbequeRouter = require('./routes/barbeque');
 
 var app = express();
 
@@ -71,6 +73,8 @@ app.use('/users', usersRouter);
 app.use('/Barbeque', BarbequeRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
+app.use('/barbeque',barbequeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
