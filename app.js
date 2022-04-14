@@ -9,7 +9,7 @@ const connectionString = process.env.MONGO_CON
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var BarbequesRouter = require('./routes/Barbeque');
+var BarbequeRouter = require('./routes/Barbeque');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/Barbeques', BarbequesRouter);
+app.use('/Barbeque', BarbequeRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
