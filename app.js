@@ -4,18 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 mongoose = require('mongoose');
-var Barbeque = require('./models/BarbequeSchema');
+var Barbeque = require('./models/Barbeque');
 const connectionString = process.env.MONGO_CON
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var BarbequesRouter = require('./routes/Barbeque');//
+var BarbequesRouter = require('./routes/Barbeque');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
 
 
-mongoose.connect(connectionString, {
+mongoose.connect('mongodb+srv://Nikhila:nikhila@cluster0.1xfbo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -43,21 +43,21 @@ async function recreateDB() {
   // Delete everything
   await Barbeque.deleteMany();
   let instance1 = new Barbeque(
-    { Barbeque_flavour: "Butterscotch", Barbeque_quantity: '2lb', Barbeque_cost: 10 });
+    { order_name: "Chicken", order_quantity: '2', order_price: 60 });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("First object saved")
   });
 
   let instance2 = new Barbeque(
-    { Barbeque_flavour: "Vanilla", Barbeque_quantity: '4lb', Barbeque_cost: 20 });
+    { order_name: "Fish", order_quantity: '7', order_price: 80 });
   instance2.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Second object saved")
   });
 
   let instance3 = new Barbeque(
-    { Barbeque_flavour: "Chocolate", Barbeque_quantity: '6lb', Barbeque_cost: 40 });
+    { order_name: "Prawns", order_quantity: '4', order_price: 30 });
   instance3.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Third object saved")
@@ -82,4 +82,10 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
 module.exports = app;
