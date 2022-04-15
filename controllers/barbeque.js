@@ -42,8 +42,25 @@ exports.Barbeque_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: Barbeque delete DELETE ' + req.params.id);
 };
 // Handle Costume update form on PUT.
-exports.Barbeque_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: Barbeque update PUT' + req.params.id);
+exports.Barbeque_update_put = async function (req, res) {
+    //res.send('NOT IMPLEMENTED: Barbeque update PUT' + req.params.id);
+    console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Barbeque.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.order_name)
+            toUpdate.order_name = req.body.order_name;
+        if (req.body.order_quantity) toUpdate.cost = req.body.order_quantity;
+        if (req.body.size) toUpdate.order_price = req.body.order_price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+    }
 };
 // VIEWS
 // Handle a show all view
