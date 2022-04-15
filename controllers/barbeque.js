@@ -51,8 +51,8 @@ ${JSON.stringify(req.body)}`)
         // Do updates of properties
         if (req.body.order_name)
             toUpdate.order_name = req.body.order_name;
-        if (req.body.order_quantity) toUpdate.cost = req.body.order_quantity;
-        if (req.body.size) toUpdate.order_price = req.body.order_price;
+        if (req.body.order_quantity) toUpdate.order_quantity = req.body.order_quantity;
+        if (req.body.order_price) toUpdate.order_price = req.body.order_price;
         let result = await toUpdate.save();
         console.log("Sucess " + result)
         res.send(result)
