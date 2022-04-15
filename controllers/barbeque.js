@@ -10,9 +10,16 @@ exports.Barbeque_list = async function(req, res) {
     res.status(500);
     }
     };
-// for a specific Costume.
-exports.Barbeque_detail = function(req, res) {
- res.send('NOT IMPLEMENTED: Barbeque detail: ' + req.params.id);
+// for a specific barbeque.
+exports.Barbeque_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await Barbeque.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 // Handle Costume create on POST.
 exports.Barbeque_create_post = async function(req, res) {
