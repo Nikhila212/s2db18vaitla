@@ -82,3 +82,17 @@ exports.Barbeque_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
+
+   // Handle a show one view with id specified by query
+exports.Barbeque_view_one_Page = async function (req, res) {
+    console.log("single view for id " + req.query.id)
+    try {
+        result = await Barbeque.findById(req.query.id)
+        res.render('Barbequedetail',
+            { title: 'Barbeque Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
