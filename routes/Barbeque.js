@@ -14,6 +14,7 @@ router.get('/create', Barbeque_controllers.Barbeque_create_Page);
 /* GET create update page */
 router.get('/update', Barbeque_controllers.Barbeque_update_Page);
 
-
+/* GET delete delete page */
+router.get('/delete', Barbeque_controllers.Barbeque_delete_Page);
 
 module.exports = router;

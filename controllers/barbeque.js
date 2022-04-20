@@ -124,3 +124,19 @@ exports.Barbeque_update_Page = async function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+// Handle a delete one view with id from query
+exports.Barbeque_delete_Page = async function (req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try {
+        result = await Barbeque.findById(req.query.id)
+        res.render('BarbequeDelete', {
+            title: 'Barbeque Delete', toShow:
+                result
+        });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
