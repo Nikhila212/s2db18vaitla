@@ -1,0 +1,40 @@
+extends layout
+block content
+    h1= title
+
+    - let Barbeque_id = toShow._id
+    - let order_name = toShow.order_name
+    - let order_quantity = toShow.order_quantity
+    - let order_price = toShow.order_price
+     div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{Barbeque_id}
+    - let actionid = "/resource/Barbeque/" + Barbeque_id
+    form(id='BarbequeForm' action= actionid method="PUT")
+        div.form-group
+            label.BarbequeAttr(for='order_name') Barbeque type
+            input#order_name(type='text' name='order_name',value= order_name )
+        div.form-group
+            label.BarbequeAttr(for='order_quantity') Barbeque size
+            input#order_quantity(type='text' name='order_quantity', value= order_quantity)
+        div.form-group
+            label.BarbequeAttr(for='order_price') Barbeque cost
+            input#order_price(type='number' name='order_price',value= order_price)
+            input(type="submit")
+        script.
+            document.forms['BarbequeForm'].addEventListener('submit', (event) => {
+                event.preventDefault();
+                // TODO do something here to show user that form is being submitted
+                fetch(event.target.action, {
+                    method: 'PUT',
+                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+                }).then((resp) => {
+                    return resp.json(); // or resp.text() or whatever the server sends
+                }).then((body) => {
+                    alert("Save succeded")
+                    // TODO handle body
+                }).catch((error) => {
+                    // TODO handle error
+                    alert("Save failed " + error )
+                });
+            });
