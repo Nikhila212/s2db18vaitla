@@ -97,16 +97,16 @@ exports.Barbeque_view_one_Page = async function (req, res) {
     }
 };
 
-// Handle building the view for updating a Barbeque.
-// query provides the id
-exports.Barbeque_update_Page = async function (req, res) {
-    console.log("update view for item " + req.query.id)
-    try {
-        let result = await Barbeque.findById(req.query.id)
-        res.render('BarbequeUpdate', { title: 'Barbeque Update', toShow: result });
+// Handle building the view for creating a Barbeque.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.Barbeque_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('Barbequecreate', { title: 'Barbeque Create'});
     }
-    catch (err) {
-        res.status(500)
-        res.send(`{'error': '${err}'}`);
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
-};
+    };
