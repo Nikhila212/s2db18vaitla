@@ -8,4 +8,7 @@ router.get('/', Barbeque_controllers.Barbeque_view_all_Page);
 /* GET costumes for one instance view*/
 router.get('/detail', Barbeque_controllers.Barbeque_view_one_Page);
 
+/* GET create barbeque page */
+router.get('/create', Barbeque_controllers.Barbeque_create_Page);
+
 module.exports = router;
