@@ -10,41 +10,41 @@ block content
         - let order_quantity = toShow.order_quantity
         - let order_price = toShow.order_price
         - let actionid = "/resource/Barbeque/" + Barbeque_id
-        form(actionid = "#{actionid}" method="DELETE")
-            div
-                div.row
-                    div(class='BarbequeAttr mr-3') Barbeque ID is:
-                    div #{Barbeque_id}
-                div.row
-                    div(class='BarbequeAttr mr-3') Barbeque Type is:
-                    div #{order_name}
-                div.row
-                    div(class='BarbequeAttr mr-3') Barbeque Size is:
-                    div #{order_quantity}
-                div.row
-                    div(class='BarbequeAttr mr-3') Barbeque Cost is:
-                    div #{order_price}
-            button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
-            button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
-        script.
-            function cancel() {
-                // Go back to the home page for the Barbeque collection
-                window.location.href='/Barbeque'
-            }
-        script.
-            function deleteOnid() {
-                console.log("starting delete")
+        script let actionid = "#{actionid}"
+        div
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque ID is:
+                div #{Barbeque_id}
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque Type is:
+                div #{order_name}
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque Size is:
+                div #{order_quantity}
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque Cost is:
+                div #{order_price}
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+        function cancel() {
+                // Go back to the home page for the costume collection
+            window.location.href='/Barbeque'
+        }
+    script.
+        function deleteOnid() {
+            console.log("starting delete")
                 // delete first
-                fetch(actionid, {
-                    method: 'DELETE' // Don't need a body for the delete
-                }).then((resp) => {
-                    return resp.json(); // or resp.text() or whatever the server sends
-                }).then((body) => {
-                    alert("Delete succeded")
-                    window.location.href='/Barbeque'
+            fetch(actionid, {
+                method: 'DELETE' // Don't need a body for the delete
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Delete succeded")
+                window.location.href='/Barbeque'
                     // TODO handle body
-                }).catch((error) => {
+            }).catch((error) => {
                     // TODO handle error
-                    alert("Delete failed " + error )
-                });
-            }
+                alert("Delete failed " + error )
+            });
+        }
