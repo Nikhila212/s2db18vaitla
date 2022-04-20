@@ -6,6 +6,6 @@ var router = express.Router();
 router.get('/', Barbeque_controllers.Barbeque_view_all_Page);
 
 /* GET costumes for one instance view*/
-router.get('/detail', Barbeque_controllers.icecream_view_one_Page);
+router.get('/detail', Barbeque_controllers.Barbeque_view_one_Page);
 
 module.exports = router;

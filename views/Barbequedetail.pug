@@ -1,14 +1,14 @@
 extends layout
 block content
     h1= title
-    - let Barbequeid = toShow._id
+    - let Barbeque_id = toShow._id
     - let order_name = toShow.order_flavour
     - let order_quantity = toShow.order_quantity
     - let order_price = toShow.order_price
     div
         div.row
             div(class='BarbequeAttr mr-3') Barbeque ID is:
-            div #{Barbequeid}
+            div #{Barbeque_id}
         div.row
             div(class='BarbequeAttr mr-3') Barbeque Type is:
             div #{order_name}
