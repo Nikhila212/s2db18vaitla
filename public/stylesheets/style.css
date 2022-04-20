@@ -7,7 +7,19 @@ a {
   color: #00B7FF;
 }
 
+h1{
+  color: red;
+}
+
 .BarbequeAttr {
-  background-color: aquamarine;
+  background-color: coral;
   width: 120px;
  }
+
+ .values {
+  border: outset;
+  width: 300px;
+  border-color: coral;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

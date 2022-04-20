@@ -3,13 +3,13 @@ block content
     h1= title
 
     if(toShow == null)
-    h2= No instance to delete
+    h2 No instance to display
     else 
     - let Barbeque_id = toShow._id
     - let order_name = toShow.order_name
     - let order_quantity = toShow.order_quantity
     - let order_price = toShow.order_price
-    
+
     div
         div.row
             div(class='BarbequeAttr mr-3') Barbeque ID is:
