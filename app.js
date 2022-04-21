@@ -4,18 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 mongoose = require('mongoose');
-var Barbeque = require('./models/Barbeque');
+var dolphin = require('./models/dolphin');
 const connectionString = process.env.MONGO_CON
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var BarbequeRouter = require('./routes/Barbeque');
+var dolphinRouter = require('./routes/dolphin');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
 
 
-mongoose.connect('mongodb+srv://Nikhila:nikhila@cluster0.1xfbo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://Chooseyourconnection:padma@cluster0.2h8dj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/Barbeque', BarbequeRouter);
+app.use('/dolphin', dolphinRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
@@ -41,23 +41,23 @@ app.use('/resource', resourceRouter);
 // We can seed the collection if needed on server start
 async function recreateDB() {
   // Delete everything
-  await Barbeque.deleteMany();
-  let instance1 = new Barbeque(
-    { order_name: "Chicken", order_quantity: '2', order_price: 60 });
+  await dolphin.deleteMany();
+  let instance1 = new dolphin(
+    { name: "Bottle Nose", age: '23', weight: 60 });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("First object saved")
   });
 
-  let instance2 = new Barbeque(
-    { order_name: "Fish", order_quantity: '7', order_price: 80 });
+  let instance2 = new dolphin(
+    { name: "Amazon River", age: '67', weight: 80 });
   instance2.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Second object saved")
   });
 
-  let instance3 = new Barbeque(
-    { order_name: "Prawns", order_quantity: '4', order_price: 30 });
+  let instance3 = new dolphin(
+    { name: "Ganges River", age: '54', weight: 40 });
   instance3.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Third object saved")

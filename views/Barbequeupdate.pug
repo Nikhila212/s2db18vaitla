@@ -3,7 +3,8 @@ block content
     h1= title
 
     if(toShow == null)
-    h2 No instance to update
+    h2 No instance to update 
+
     else 
     - let Barbeque_id = toShow._id
     - let order_name = toShow.order_name
@@ -17,13 +18,13 @@ block content
     form(id='BarbequeForm' action= actionid method="PUT")
         div.form-group
             label.BarbequeAttr(for='order_name') Barbeque type
-            input#order_name(type='text' name='order_name',value= order_name )
+            input#order_name(type='text' order_name='order_name',value= order_name )
         div.form-group
             label.BarbequeAttr(for='order_quantity') Barbeque size
-            input#order_quantity(type='text' name='order_quantity', value= order_quantity)
+            input#order_quantity(type='text' order_name='order_quantity', value= order_quantity)
         div.form-group
             label.BarbequeAttr(for='order_price') Barbeque cost
-            input#order_price(type='number' name='order_price',value= order_price)
+            input#order_price(type='number' order_name='order_price',value= order_price)
             input(type="submit")
         script.
             document.forms['BarbequeForm'].addEventListener('submit', (event) => {

@@ -6,27 +6,27 @@ block content
   -
     let results = [
       {
-        "Order_Name": "Biryani",
-        "Order_quantity": "2",
-        "Order_price": 16
+        "order_name": "Chicken",
+        "order_quantity": "4",
+        "order_price": 67
       },
       {
-        "Order_Name": "Chicken 65",
-        "Order_quantity": "4",
-        "Order_price": 60
+        "order_name": "Fish",
+        "order_quantity": "5",
+        "order_price": 60
       },
       {
-        "Order_Name": "Manchuria",
-        "Order_quantity": "1",
-        "Order_price": 20
+        "order_name": "Prawns",
+        "order_quantity": "1",
+        "order_price": 70
       },                   
     ]
   div(class= "container-fluid")
     div(class = "row")
       each item,index in results
-        div(class= "col-sm-2" , onclick=`buy(${index})`) #{item.Order_Name}
-        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.Order_quantity}
-        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.Order_price}
+        div(class= "col-sm-2" , onclick=`buy(${index})`) #{item.order_name}
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.order_quantity}
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.order_price}
 
   script.
     function buy(itemNum){

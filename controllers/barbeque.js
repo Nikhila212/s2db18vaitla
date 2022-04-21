@@ -10,7 +10,7 @@ exports.Barbeque_list = async function(req, res) {
     res.status(500);
     }
     };
-// for a specific barbeque.
+// for a specific Barbeque.
 exports.Barbeque_detail = async function (req, res) {
     console.log("detail" + req.params.id)
     try {
@@ -72,7 +72,7 @@ failed`);
 };
 // VIEWS
 // Handle a show all view
-exports.Barbeque_view_all_Page = async function(req, res) {
+exports.Barbeque_view_all_Porder_quantity = async function(req, res) {
     try{
     theBarbeque = await Barbeque.find();
     res.render('Barbeque', { title: 'Barbeque Search Results', results: theBarbeque });
@@ -84,7 +84,7 @@ exports.Barbeque_view_all_Page = async function(req, res) {
    };
 
    // Handle a show one view with id specified by query
-exports.Barbeque_view_one_Page = async function (req, res) {
+exports.Barbeque_view_one_Porder_quantity = async function (req, res) {
     console.log("single view for id " + req.query.id)
     try {
         result = await Barbeque.findById(req.query.id)
@@ -100,7 +100,7 @@ exports.Barbeque_view_one_Page = async function (req, res) {
 // Handle building the view for creating a Barbeque.
 // No body, no in path parameter, no query.
 // Does not need to be async
-exports.Barbeque_create_Page = function(req, res) {
+exports.Barbeque_create_Porder_quantity = function(req, res) {
     console.log("create view")
     try{
     res.render('Barbequecreate', { title: 'Barbeque Create'});
@@ -113,7 +113,7 @@ exports.Barbeque_create_Page = function(req, res) {
 
 // Handle building the view for updating a Barbeque.
 // query provides the id
-exports.Barbeque_update_Page = async function (req, res) {
+exports.Barbeque_update_Porder_quantity = async function (req, res) {
     console.log("update view for item " + req.query.id)
     try {
         let result = await Barbeque.findById(req.query.id)
@@ -126,7 +126,7 @@ exports.Barbeque_update_Page = async function (req, res) {
 };
 
 // Handle a delete one view with id from query
-exports.Barbeque_delete_Page = async function (req, res) {
+exports.Barbeque_delete_Porder_quantity = async function (req, res) {
     console.log("Delete view for id " + req.query.id)
     try {
         result = await Barbeque.findById(req.query.id)
