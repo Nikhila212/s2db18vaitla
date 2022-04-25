@@ -3,24 +3,24 @@ block content
     h1= title
 
     if(toShow == null)
-    h2 No instance to display
+        h2 No instance to display
 
     else
-    - let Barbeque_id = toShow._id
-    - let order_name = toShow.order_name
-    - let order_quantity = toShow.order_quantity
-    - let order_price = toShow.order_price
+        - let Barbeque_id = toShow._id
+        - let order_name = toShow.order_name
+        - let order_quantity = toShow.order_quantity
+        - let order_price = toShow.order_price
 
-    div
-        div.row
-            div(class='BarbequeAttr mr-3') Barbeque ID is:
-            div #{Barbeque_id}
-        div.row
-            div(class='BarbequeAttr mr-3') Barbeque Type is:
-            div #{order_name}
-        div.row
-            div(class='BarbequeAttr mr-3') Barbeque Size is:
-            div #{order_quantity}
-        div.row
-            div(class='BarbequeAttr mr-3') Barbeque Cost is:
-            div #{order_price}
+        div
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque ID is:
+                div #{Barbeque_id}
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque Type is:
+                div #{order_name}
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque Size is:
+                div #{order_quantity}
+            div.row
+                div(class='BarbequeAttr mr-3') Barbeque Cost is:
+                div #{order_price}

@@ -20,12 +20,12 @@ router.get('/', Barbeque_controllers.Barbeque_view_all_Page);
 router.get('/detail', Barbeque_controllers.Barbeque_view_one_Page);
 
 /* GET create Barbeque page */
-router.get('/create', Barbeque_controllers.Barbeque_create_Page);
+router.get('/create', secured, Barbeque_controllers.Barbeque_create_Page);
 
 /* GET update Barbeque page */
 router.get('/update',secured, Barbeque_controllers.Barbeque_update_Page);
 
 /* GET delete delete page */
-router.get('/delete', Barbeque_controllers.Barbeque_delete_Page);
+router.get('/delete',secured, Barbeque_controllers.Barbeque_delete_Page);
 
 module.exports = router;
